@@ -30,6 +30,7 @@ public class Passenger {
     private String phone;
 
     @Column
+    @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
 
     @Column(length = 255)
