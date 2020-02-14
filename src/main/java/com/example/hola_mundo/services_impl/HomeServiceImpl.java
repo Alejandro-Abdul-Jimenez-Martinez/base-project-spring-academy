@@ -21,7 +21,7 @@ public class HomeServiceImpl implements HomeService {
         Map<String, Object> response = new HashMap<>();
 
         LOG.info("Hola mundo desde Spring Boot");
-        response.put("respuesta", "Hola mundo desde Spring Boot - 202Accepted");
+        response.put("respuesta", "Hola mundo desde Spring Boot usando servicios - 202Accepted");
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 }

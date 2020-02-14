@@ -17,10 +17,13 @@ import java.util.logging.Logger;
 public class HomeController {
 
     private static final Logger LOG = Logger.getLogger(HomeController.class.getName());
+    private HomeService homeService;
 
     // Services
     @Autowired
-    HomeService homeService;
+    public void setHomeService(HomeService homeService) {
+        this.homeService = homeService;
+    }
 
     @GetMapping("hola-mundo")
     public ResponseEntity<?> holaMundo() {
