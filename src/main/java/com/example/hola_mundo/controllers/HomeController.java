@@ -38,7 +38,7 @@ public class HomeController {
     @GetMapping("getHolaMundo")
     public ResponseEntity<?> getHolaMundo() {
 
-        return homeService.getHolaMundo();
+        return this.homeService.getHolaMundo();
     }
 }
 
