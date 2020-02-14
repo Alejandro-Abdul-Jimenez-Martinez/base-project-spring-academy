@@ -1,6 +1,6 @@
 package com.example.hola_mundo.controllers;
 
-import com.example.hola_mundo.models.Passenger;
+import com.example.hola_mundo.dto.DTOPassenger;
 import com.example.hola_mundo.services.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +30,7 @@ public class PassengerController {
     public ResponseEntity<?> getPassengers() {
 
         Map<String, Object> response = new HashMap<>();
-        List<Passenger> passengers = this.passengerService.getPassengers();
+        List<DTOPassenger> passengers = this.passengerService.getPassengers();
 
         if(passengers.isEmpty()) {
             response.put("Passengers", "No passengers");
