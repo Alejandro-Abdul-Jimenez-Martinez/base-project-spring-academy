@@ -33,4 +33,14 @@ public class PassengerServiceImpl implements PassengerService {
 
         return this.passengerConverter.passengerToDTOPassenger((List<Passenger>) this.passengerRepository.findAll());
     }
+
+    @Override
+    public DTOPassenger findPassengerByFirstName(String firstName) {
+        return this.passengerConverter.passengerToDTOPassenger(this.passengerRepository.findByFirstName(firstName));
+    }
+
+    @Override
+    public DTOPassenger getPassengerByFirstName(String firstName) {
+        return this.passengerConverter.passengerToDTOPassenger(this.passengerRepository.getPassengerByFirstName(firstName));
+    }
 }

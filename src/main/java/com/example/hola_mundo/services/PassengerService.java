@@ -7,4 +7,6 @@ import java.util.List;
 public interface PassengerService {
 
     List<DTOPassenger> getPassengers();
+    DTOPassenger findPassengerByFirstName(String firstName);
+    DTOPassenger getPassengerByFirstName(String firstName);
 }
