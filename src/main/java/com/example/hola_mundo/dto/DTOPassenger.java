@@ -1,17 +1,20 @@
 package com.example.hola_mundo.dto;
 
+import com.example.hola_mundo.models.Role;
+
 import java.util.Date;
+import java.util.List;
 
 public class DTOPassenger {
 
     private long id;
-    private byte role;
     private String firstName;
     private String lastName;
     private byte age;
     private String email;
     private String phone;
     private Date registrationDate;
+    private List<Role> roles;
 
     public long getId() {
         return id;
@@ -19,14 +22,6 @@ public class DTOPassenger {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public byte getRole() {
-        return role;
-    }
-
-    public void setRole(byte role) {
-        this.role = role;
     }
 
     public String getFirstName() {
@@ -75,5 +70,13 @@ public class DTOPassenger {
 
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

@@ -15,13 +15,13 @@ public class PassengerConverter {
         DTOPassenger dtoPassenger = new DTOPassenger();
 
         dtoPassenger.setId(passenger.getId());
-        dtoPassenger.setRole(passenger.getRole());
         dtoPassenger.setFirstName(passenger.getFirstName());
         dtoPassenger.setLastName(passenger.getLastName());
         dtoPassenger.setAge(passenger.getAge());
         dtoPassenger.setEmail(passenger.getEmail());
         dtoPassenger.setPhone(passenger.getPhone());
         dtoPassenger.setRegistrationDate(passenger.getRegistrationDate());
+        dtoPassenger.setRoles(passenger.getRoles());
 
         return dtoPassenger;
     }
@@ -44,7 +44,6 @@ public class PassengerConverter {
         Passenger passenger = new Passenger();
 
         passenger.setId(dtoPassenger.getId());
-        passenger.setRole(dtoPassenger.getRole());
         passenger.setFirstName(dtoPassenger.getFirstName());
         passenger.setLastName(dtoPassenger.getLastName());
         passenger.setAge(dtoPassenger.getAge());

@@ -2,17 +2,15 @@ package com.example.hola_mundo.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name="passengers")
+@Table(name = "passengers")
 public class Passenger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Column
-    private byte role;
 
     @Column(length = 30)
     private String firstName;
@@ -33,8 +31,18 @@ public class Passenger {
     @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
 
-    @Column(length = 255)
+    @Column
     private String password;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users_roles", joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_role"),
+            uniqueConstraints = {
+                    @UniqueConstraint(columnNames= {"id_user", "id_role"})
+            }
+    )
+    private List<Role> roles;
 
     public Passenger() {}
 
@@ -44,14 +52,6 @@ public class Passenger {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public byte getRole() {
-        return role;
-    }
-
-    public void setRole(byte role) {
-        this.role = role;
     }
 
     public String getFirstName() {
@@ -108,5 +108,13 @@ public class Passenger {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
