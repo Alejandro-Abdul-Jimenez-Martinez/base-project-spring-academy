@@ -43,4 +43,9 @@ public class PassengerServiceImpl implements PassengerService {
     public DTOPassenger getPassengerByFirstName(String firstName) {
         return this.passengerConverter.passengerToDTOPassenger(this.passengerRepository.getPassengerByFirstName(firstName));
     }
+
+    @Override
+    public void setPassenger(Passenger passenger) {
+        this.passengerRepository.save(passenger);
+    }
 }

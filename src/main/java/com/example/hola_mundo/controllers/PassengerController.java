@@ -1,14 +1,12 @@
 package com.example.hola_mundo.controllers;
 
 import com.example.hola_mundo.dto.DTOPassenger;
+import com.example.hola_mundo.models.Passenger;
 import com.example.hola_mundo.services.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -71,6 +69,21 @@ public class PassengerController {
         } catch (NullPointerException e) {
             response.put("Error", "No passenger with the given first name");
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("create")
+    public ResponseEntity<?> createPassenger(@RequestBody Passenger passenger) {
+
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            this.passengerService.setPassenger(passenger);
+            response.put("Success", "User added correctly");
+            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            response.put("Error", e.getStackTrace());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
